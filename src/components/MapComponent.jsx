@@ -36,14 +36,14 @@ export default function MapComponent({ locations, selectedLocation }) {
                     className="w-full h-full"
                 >
                     {/* <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
-                    <TileLayer
-                        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-                    />
-
                     {/* <TileLayer
+                        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+                    /> */}
+
+                    <TileLayer
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
-                    /> */}
+                    />
                     {/* <TileLayer
                         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
