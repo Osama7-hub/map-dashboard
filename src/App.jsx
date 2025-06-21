@@ -298,22 +298,57 @@ const locations = [
 
 export default function App() {
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
-      <Navbar />
+      <Navbar setSidebarOpen={setSidebarOpen} />
 
       {/* ✅ استخدام Grid دائمًا، لكن الأعمدة تتغير حسب حجم الشاشة */}
       <div className="grid grid-cols-12 h-[calc(100vh-56px)] overflow-hidden">
-        
-        {/* ✅ Sidebar */}
-        <div className="col-span-12 md:col-span-2 overflow-y-auto">
+
+        {/* ✅ Sidebar - دائمًا ظاهر في md وما فوق */}
+        <div className="hidden md:block md:col-span-2 h-full">
           <LeftSidebar
             locations={locations}
             selectedLocation={selectedLocation}
             setSelectedLocation={setSelectedLocation}
           />
         </div>
+
+        {/* ✅ Drawer في الشاشات الصغيرة */}
+        {sidebarOpen && (
+          <div className="md:hidden z-50 absolute inset-0 bg-black/50">
+            {/* <div className="bg-[#1f1f2c] p-4 w-3/4 h-full overflow-y-auto"> */}
+            <div
+              className="z-50 bg-[#1f1f2c] p-4 w-3/4 h-full overflow-y-auto"
+              onClick={(e) => e.stopPropagation()} // هنا نمنع غلقه عند الضغط داخله
+            >
+              <LeftSidebar
+                locations={locations}
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
+                setSidebarOpen={setSidebarOpen}
+              />
+            </div>
+
+            {/* ✅ خلفية لإغلاق القائمة عند الضغط خارجها */}
+            <div
+              className="z-40 flex-1 bg-black/50"
+              onClick={() => setSidebarOpen(false)}
+            />
+          </div>
+        )}
+
+
+        {/* ✅ Sidebar
+        <div className="col-span-12 md:col-span-2 overflow-y-auto">
+          <LeftSidebar
+            locations={locations}
+            selectedLocation={selectedLocation}
+            setSelectedLocation={setSelectedLocation}
+          />
+        </div> */}
 
         {/* ✅ Map */}
         <div className="col-span-12 md:col-span-8 h-full min-h-[50vh]">

@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Bell, User, Settings, LogOut } from "lucide-react";
+import { Bell, User, Settings, LogOut, Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+export default function Navbar({ setSidebarOpen }) {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef();
 
@@ -23,7 +23,13 @@ export default function Navbar() {
   }, [showMenu]);
 
   return (
-    <header className="flex justify-between items-center bg-[#1f1f2c] shadow-md px-6 py-3 text-white">
+    <header className="z-60 flex justify-between items-center bg-[#1f1f2c] shadow-md px-6 py-3 text-white">
+      {/* ✅ زر إظهار القائمة (للجوال فقط) */}
+      <div className="md:hidden">
+        <button onClick={() => setSidebarOpen(true)}>
+          <Menu className="w-6 h-6 text-white" />
+        </button>
+      </div>
       {/* شعار أو عنوان */}
       <div className="font-semibold text-lg tracking-wide">🛰️ Analytics Dashboard</div>
 
@@ -52,7 +58,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="right-0 absolute bg-white shadow-lg mt-2 border border-gray-200 rounded-md w-48 overflow-hidden text-gray-800"
+                className="right-0 z-60 absolute bg-white shadow-lg mt-2 border border-gray-200 rounded-md w-48 overflow-hidden text-gray-800"
               >
                 <ul className="text-sm">
                   <li className="hover:bg-gray-100 px-4 py-2 cursor-pointer">👤 Profile</li>
