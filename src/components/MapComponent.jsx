@@ -42,13 +42,8 @@ export default function MapComponent({ locations, selectedLocation }) {
 
                     <TileLayer
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-                        attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
+                        // attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
                     />
-                    {/* <TileLayer
-                        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                        attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
-                    /> */}
-
 
                     {selectedLocation && <FlyToLocation position={selectedLocation.position} />}
                     {locations.map((loc) => (
@@ -68,7 +63,7 @@ export default function MapComponent({ locations, selectedLocation }) {
                             {/* دائرة شفافة حول الموقع */}
                             <Circle
                                 center={loc.position}
-                                radius={20000} // يمكن تغييره حسب أهمية الموقع
+                                radius={20000}
                                 pathOptions={{
                                     color: "#3b82f6",
                                     fillColor: "#3b82f6",

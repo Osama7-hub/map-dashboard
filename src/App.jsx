@@ -302,22 +302,31 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <div className="grid grid-cols-12 h-screen">
-        {/* القائمة اليسرى */}
-        <LeftSidebar
-          locations={locations}
-          selectedLocation={selectedLocation}
-          setSelectedLocation={setSelectedLocation}
-        />
 
-        {/* الخريطة في المنتصف */}
-        <div className="relative col-span-12 md:col-span-8 bg-[#f5f7fa]">
-          <MapComponent locations={locations} selectedLocation={selectedLocation} />
+      {/* ✅ استخدام Grid دائمًا، لكن الأعمدة تتغير حسب حجم الشاشة */}
+      <div className="grid grid-cols-12 h-[calc(100vh-64px)] overflow-hidden">
+        
+        {/* ✅ Sidebar */}
+        <div className="col-span-12 md:col-span-2 overflow-y-auto">
+          <LeftSidebar
+            locations={locations}
+            selectedLocation={selectedLocation}
+            setSelectedLocation={setSelectedLocation}
+          />
         </div>
 
+        {/* ✅ Map */}
+        <div className="col-span-12 md:col-span-8 h-full min-h-[50vh]">
+          <MapComponent
+            locations={locations}
+            selectedLocation={selectedLocation}
+          />
+        </div>
 
-        {/* معلومات الموقع في اليمين */}
-        <LocationDetails selectedLocation={selectedLocation} />
+        {/* ✅ Location Details */}
+        <div className="col-span-12 md:col-span-2 max-h-[30vh] md:max-h-none overflow-y-auto">
+          <LocationDetails selectedLocation={selectedLocation} />
+        </div>
       </div>
     </>
   );

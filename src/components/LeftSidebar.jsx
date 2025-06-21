@@ -28,7 +28,7 @@ export default function LeftSidebar({locations, selectedLocation, setSelectedLoc
   }, [expandedLocation]);
 
   return (
-    <div className="z-40 flex flex-col col-span-12 md:col-span-2 bg-[#1f1f2c] p-4 overflow-hidden text-white">
+    <div className="z-40 flex flex-col col-span-12 md:col-span-2 bg-[#1f1f2c] p-4 h-full overflow-hidden text-white">
       <div className="mb-6">
         <h2 className="font-semibold text-gray-100 text-lg tracking-wide">
           📍 Locations
