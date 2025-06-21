@@ -304,7 +304,7 @@ export default function App() {
       <Navbar />
 
       {/* ✅ استخدام Grid دائمًا، لكن الأعمدة تتغير حسب حجم الشاشة */}
-      <div className="grid grid-cols-12 h-[calc(100vh-64px)] overflow-hidden">
+      <div className="grid grid-cols-12 h-[calc(100vh-56px)] overflow-hidden">
         
         {/* ✅ Sidebar */}
         <div className="col-span-12 md:col-span-2 overflow-y-auto">
